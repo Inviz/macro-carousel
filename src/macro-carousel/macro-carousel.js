@@ -1372,7 +1372,7 @@ value. Add CSS units to its value to avoid breaking the slides layout.`);
    * @private
    */
   _updateAriaLiveDom() {
-    return
+    return false;
     if (this._ariaSlot.assignedNodes().length !== 1) {
       this._ariaLiveRegion = document.createElement('div');
       this._ariaLiveRegion.setAttribute(ATTRS.STANDARD.SLOT, SLOTNAMES.ARIA);
