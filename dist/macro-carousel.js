@@ -1686,7 +1686,6 @@ value. Add CSS units to its value to avoid breaking the slides layout.`);
      * @private
      */
     _updateAriaLiveDom() {
-      return
       if (this._ariaSlot.assignedNodes().length !== 1) {
         this._ariaLiveRegion = document.createElement('div');
         this._ariaLiveRegion.setAttribute(ATTRS.STANDARD.SLOT, SLOTNAMES.ARIA);
@@ -1694,7 +1693,7 @@ value. Add CSS units to its value to avoid breaking the slides layout.`);
             ATTR_VALUES.ARIA_LIVE.POLITE);
         this._ariaLiveRegion.setAttribute(ATTRS.STANDARD.ARIA.ATOMIC,
             ATTR_VALUES.TRUE);
-        this.appendChild(this._ariaLiveRegion);
+        //this.appendChild(this._ariaLiveRegion);
       }
 
       const firstSlideIndex = this._slides[this.selected].layoutIndex;
