@@ -231,8 +231,8 @@
     CAROUSEL: {},
 
     NAV_BTN: {
-      PREVIOUS: `${baseName}-previous`,
-      NEXT: `${baseName}-next`,
+      PREVIOUS: `${baseName}-previous -button`,
+      NEXT: `${baseName}-next -button`,
     },
 
     PAG_BTN: {
@@ -1686,6 +1686,7 @@ value. Add CSS units to its value to avoid breaking the slides layout.`);
      * @private
      */
     _updateAriaLiveDom() {
+      return
       if (this._ariaSlot.assignedNodes().length !== 1) {
         this._ariaLiveRegion = document.createElement('div');
         this._ariaLiveRegion.setAttribute(ATTRS.STANDARD.SLOT, SLOTNAMES.ARIA);
