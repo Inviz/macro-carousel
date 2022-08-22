@@ -12,7 +12,7 @@
     "test": "npm run test-lint && npm run bundle-test && karma start",
     "test-watch": "npm run test -- --no-single-run",
     "start": "node_modules/.bin/rollup -c rollup-config/rollup-dev-serve.config.js --watch",
-    "build": "npm run test && npm run bundle-dev && npm run bundle-prod && npm run bundle-es5"
+    "build": "npm run bundle-dev && npm run bundle-prod && npm run bundle-es5"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,6 @@
     "autoprefixer": "^9.6.1",
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
-    "chromedriver": "^76.0.1",
     "cssnano": "^4.1.10",
     "eslint": "^6.4.0",
     "eslint-config-google": "^0.14.0",
@@ -64,8 +63,8 @@
     "simulant": "^0.2.2"
   },
   "peerDependencies": {
-    "wicg-inert": "2.x",
-    "focus-visible": "5.x"
+    "focus-visible": "5.x",
+    "wicg-inert": "2.x"
   },
   "browserslist": [
     "last 2 versions",
