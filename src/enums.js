@@ -21,8 +21,8 @@ const CLASSNAMES = {
   CAROUSEL: {},
 
   NAV_BTN: {
-    PREVIOUS: `${baseName}-previous -button`,
-    NEXT: `${baseName}-next -button`,
+    PREVIOUS: `${baseName}-previous`,
+    NEXT: `${baseName}-next`,
   },
 
   PAG_BTN: {

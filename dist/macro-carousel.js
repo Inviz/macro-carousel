@@ -231,8 +231,8 @@
     CAROUSEL: {},
 
     NAV_BTN: {
-      PREVIOUS: `${baseName}-previous -button`,
-      NEXT: `${baseName}-next -button`,
+      PREVIOUS: `${baseName}-previous`,
+      NEXT: `${baseName}-next`,
     },
 
     PAG_BTN: {
@@ -1686,6 +1686,7 @@ value. Add CSS units to its value to avoid breaking the slides layout.`);
      * @private
      */
     _updateAriaLiveDom() {
+      return false;
       if (this._ariaSlot.assignedNodes().length !== 1) {
         this._ariaLiveRegion = document.createElement('div');
         this._ariaLiveRegion.setAttribute(ATTRS.STANDARD.SLOT, SLOTNAMES.ARIA);
@@ -1693,7 +1694,7 @@ value. Add CSS units to its value to avoid breaking the slides layout.`);
             ATTR_VALUES.ARIA_LIVE.POLITE);
         this._ariaLiveRegion.setAttribute(ATTRS.STANDARD.ARIA.ATOMIC,
             ATTR_VALUES.TRUE);
-        //this.appendChild(this._ariaLiveRegion);
+        this.appendChild(this._ariaLiveRegion);
       }
 
       const firstSlideIndex = this._slides[this.selected].layoutIndex;
@@ -2166,7 +2167,7 @@ value. Add CSS units to its value to avoid breaking the slides layout.`);
     }
   }
 
-  var buttonHtml = "<div class=\"content\">\n  <div class=\"bg\"></div>\n  <div class=\"icon\"></div>\n</div>\n";
+  var buttonHtml = "<div class=\"content -button\">\n  <div class=\"bg\"></div>\n  <div class=\"icon\"></div>\n</div>\n";
 
   var css$1 = "/*******************************************************************************\n  Host and CSS properties\n*******************************************************************************/\n\n:host {\n  --macro-carousel-navigation-color: #000;\n  --macro-carousel-navigation-color-focus: var(--macro-carousel-navigation-color);\n  --macro-carousel-navigation-color-background: transparent;\n  --macro-carousel-navigation-color-background-focus: #f0f0f0;\n  --macro-carousel-navigation-button-size: 48px;\n  --macro-carousel-navigation-icon-size: 24px;\n  --macro-carousel-navigation-icon-mask: url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3E %3Cpath d='M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z'/%3E %3C/svg%3E\");\n\n  position: relative;\n\n  display: -webkit-inline-box;\n\n  display: -ms-inline-flexbox;\n\n  display: inline-flex;\n  min-width: var(--macro-carousel-navigation-button-size);\n  min-height: var(--macro-carousel-navigation-button-size);\n\n  border-radius: 50%;\n\n  overflow: hidden;\n\n  cursor: pointer;\n\n  contain: paint;\n}\n\n:host([disabled]) {\n  opacity: .2;\n}\n\n.content,\n.bg {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n}\n\n.content {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n\n  background-color: var(--macro-carousel-navigation-color-background);\n}\n\n/*\n * bg colored circle.\n */\n.bg {\n  z-index: 0;\n\n  background-color: var(--macro-carousel-navigation-color-background-focus);\n\n  opacity: 0;\n\n  will-change: opacity;\n}\n\n.icon {\n  position: relative;\n\n  z-index: 1;\n\n  width: var(--macro-carousel-navigation-icon-size);\n  height: var(--macro-carousel-navigation-icon-size);\n\n  /*\n   * Fallback for when mask-image is not supported:\n   * using the SVG as a background. Only issue, the icon color\n   * won't change.\n  */\n  color: var(--macro-carousel-navigation-color);\n\n  background: var(--macro-carousel-navigation-icon-mask);\n}\n\n@supports ((-webkit-mask-image: var(--macro-carousel-navigation-icon-mask)) or (mask-image: var(--macro-carousel-navigation-icon-mask))) {\n  .icon {\n    background: var(--macro-carousel-navigation-color);\n\n    /* References:\n    * - https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image\n    * - https://codepen.io/tigt/post/optimizing-svgs-in-data-uris\n    */\n    -webkit-mask-image: var(--macro-carousel-navigation-icon-mask);\n            mask-image: var(--macro-carousel-navigation-icon-mask);\n  }\n}\n\n:host([flipped]) .icon {\n  -webkit-transform: rotateZ(180deg);\n          transform: rotateZ(180deg);\n}\n\n/*\n * Show the bg circle when the button is not disabled and is hovered, active,\n * focused or keyboard-focused (thanks to the focus-visible polyfill).\n */\n:host(:hover:not([disabled])) .bg,\n:host(:active:not([disabled])) .bg,\n:host(:focus:not([disabled])) .bg,\n:host(.focus-visible) .bg {\n  opacity: 1;\n}\n\n/*\n * Do not show the bg circle if the button is focused (but not active or not hovered)\n * and doesn't have a focused-visible class. This means, do not leave the bg showing\n * after the user clicks on the button.\n */\n:host-context(.js-focus-visible):host(:focus:not(:active):not(:hover):not(.focus-visible)) .bg {\n  opacity: 0;\n}\n\n@supports ((-webkit-mask-image: var(--macro-carousel-navigation-icon-mask)) or (mask-image: var(--macro-carousel-navigation-icon-mask))) {\n  /*\n   * Same as rules above, but for the icon's color.\n   */\n  :host(:hover:not([disabled])) .icon,\n  :host(:active:not([disabled])) .icon,\n  :host(:focus:not([disabled])) .icon,\n  :host(.focus-visible) .icon {\n    background: var(--macro-carousel-navigation-color-focus);\n  }\n\n  :host-context(.js-focus-visible):host(:focus:not(:active):not(:hover):not(.focus-visible)) .icon {\n    background: var(--macro-carousel-navigation-color);\n  }\n}\n";
 
