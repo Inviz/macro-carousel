@@ -1267,6 +1267,7 @@ value. Add CSS units to its value to avoid breaking the slides layout.`);
             this._createNavigationButton(CLASSNAMES.NAV_BTN.NEXT);
         this.appendChild(this._nextButton);
       } else {
+        debugger
         if (!this._navigationSlot.assignedNodes()[0].classList.contains(CLASSNAMES.NAV_BTN.PREVIOUS)) 
           this._prevButton =
             this._createNavigationButton(CLASSNAMES.NAV_BTN.PREVIOUS, this._navigationSlot.assignedNodes()[0]);
