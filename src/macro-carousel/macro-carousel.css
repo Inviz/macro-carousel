@@ -180,13 +180,15 @@ div ::slotted(macro-carousel-pagination-indicator.selected) {
   display: block;
 }
 
-div ::slotted(macro-carousel-nav-button) {
+div ::slotted(macro-carousel-nav-button),
+div ::slotted(.-button) {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
 
-:host([pagination]) div ::slotted(macro-carousel-nav-button) {
+:host([pagination]) div ::slotted(macro-carousel-nav-button),
+:host([pagination]) div ::slotted(.-button) {
   top: calc(50% - var(--macro-carousel-pagination-height) / 2);
 }
 
