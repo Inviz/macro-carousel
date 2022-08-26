@@ -1227,8 +1227,8 @@ value. Add CSS units to its value to avoid breaking the slides layout.`);
    * @returns {HTMLButtonElement} The button element.
    * @private
    */
-  _createNavigationButton(className) {
-    const btn = document.createElement(TAGNAMES.NAV_BTN);
+  _createNavigationButton(className, el = null) {
+    const btn = el || document.createElement(TAGNAMES.NAV_BTN);
     btn.classList.add(className);
     btn.setAttribute(ATTRS.STANDARD.SLOT, SLOTNAMES.NAVIGATION);
     btn.addEventListener(EVENTS.NAV_BTN.CLICKED, this);
@@ -1267,8 +1267,11 @@ value. Add CSS units to its value to avoid breaking the slides layout.`);
             this._createNavigationButton(CLASSNAMES.NAV_BTN.NEXT);
         this.appendChild(this._nextButton);
       } else {
-        this._prevButton = this._navigationSlot.assignedNodes()[0];
-        this._nextButton = this._navigationSlot.assignedNodes()[1];
+        if (!this._navigationSlot.assignedNodes()[0].classList.contains(CLASSNAMES.NAV_BTN.PREVIOUS)) 
+          this._prevButton =
+            this._createNavigationButton(CLASSNAMES.NAV_BTN.PREVIOUS, this._navigationSlot.assignedNodes()[0]);
+        if (!this._navigationSlot.assignedNodes()[1].classList.contains(CLASSNAMES.NAV_BTN.NEXT))
+          this._nextButton = this._createNavigationButton(CLASSNAMES.NAV_BTN.NEXT, this._navigationSlot.assignedNodes()[1]);
       }
 
       // update `disabled`
