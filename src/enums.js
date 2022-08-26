@@ -51,7 +51,7 @@ const EVENTS = {
   },
 
   NAV_BTN: {
-    CLICKED: `${TAGNAMES.NAV_BTN}-clicked`,
+    CLICKED: `click`,
   },
 
   PAG_BTN: {
